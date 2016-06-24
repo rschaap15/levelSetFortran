@@ -1,0 +1,22 @@
+&LEVELSET_SA
+    !meshfile='Ellipsoid2_coarse.stl'
+    meshfile='cube40.stl'
+    dx      = .05   ! spacial distance for levelset cartesian grid
+    CFL     = .1   ! CFL number
+    dd      = 10    ! number of cells you want to add around the object in cartesian bounding box
+    h       = 4.,.1,0.01  !h1  ! Time step for Fast Marching Method and 
+                            !h2  ! Min/Max flow 
+                            !h3  ! Time step for Level Set Reinitialization
+    iter    = 500,100,0     !iter1 ! number of maximum iterations for Fast marching Method
+                            !iter2 ! number of maximum iterations for Min/Max flow
+                            !iter3 ! number of maximum iterations for LevelSet reinitialization
+    nPass   = 2     ! How many faces to pass between MPI blocks (depends on orders of derivatives)
+    order1  = 2,2,2 ! order of accuracy for first derivative of Fast marching method, Min/Max flow, and LevelSet reinitialization
+    order2  = 2     ! order of accuracy for second derivative for Min/Max flow
+    orderUp = 1,1,1 ! order of accuracy for upwind calculations of Fast marching method, Min/Max flow, and LevelSet reinitialization
+    solutionType = 1    ! type of solution to solve
+                        ! 1 read stl file and compute LevelSet
+                        ! 2 MMS
+    convergenceLimit = 1E-10,1E-10,1E-14  ! convergence limit for Fast marching method, Min/Max flow, and LevelSet reinitialization
+    tol     = 4.0    ! slice tolerance for inside and outside section
+/
