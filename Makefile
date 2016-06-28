@@ -1,5 +1,6 @@
 OBJS = \
-	subs.o 
+	subs.o,& 
+	sfuns.o
 FFILE=set3d
 FLAGS=-O3 -fdefault-real-8
 STLFILE=cube40.stl
