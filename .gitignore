@@ -29,6 +29,7 @@
 
 # Paraview
 *.vtu
+*.stl
 
 # Executable
 *.exec

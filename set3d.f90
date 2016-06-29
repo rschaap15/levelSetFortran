@@ -36,6 +36,7 @@ REAL,ALLOCATABLE,DIMENSION(:,:) :: centroid,surfX
 CHARACTER(LEN=1) :: lf=char(10)
 CHARACTER(LEN=1024) :: extent,origin,spacing,coffset
 INTEGER*4,ALLOCATABLE,DIMENSION(:,:) :: surfElem
+INTEGER*4,ALLOCATABLE,DIMENSION(:) :: surfConn
 CHARACTER header*80,filename*80
 INTEGER*2 padding
 INTEGER*4 ntri,iunit,nSurfNode,k,i,n,p,kk,share,nSurfElem
@@ -75,6 +76,7 @@ READ(iunit) ntri
 ALLOCATE(normals(3,ntri))
 ALLOCATE(triangles(3,ntri*3))
 ALLOCATE(surfELem(ntri,3))
+ALLOCATE(surfConn(3*ntri))
  
 ! read .stl data
 k=1
@@ -146,6 +148,10 @@ DEALLOCATE(normals)
 
 DO k = 1, ntri
     offS(k) = k*3
+    surfConn(k*3 - 2) = surfElem(k,1)
+    surfConn(k*3 - 1) = surfElem(k,2)
+    surfConn(k*3    ) = surfElem(k,3)
+
 END DO
 
 cellT = 5
@@ -168,7 +174,7 @@ cellT = 5
 !           Z  = z_loc      )
         E_IO = VTK_CON_XML(&
             NC       = ntri      ,&
-            connect  = RESHAPE(surfElem,(/3*ntri/))  ,&
+            connect  = surfConn  ,&
             offset   = offS      ,&
             cell_type = cellT     )
         E_IO = VTK_GEO_XML_WRITE()
