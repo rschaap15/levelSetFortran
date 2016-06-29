@@ -26,3 +26,9 @@
 *.exe
 *.out
 *.app
+
+# Paraview
+*.vtu
+
+# Executable
+*.exec

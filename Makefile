@@ -10,7 +10,7 @@ STLFILE=cube40.stl
 
 compile: VTK $(OBJS)
 	#gfortran ${FFILE}.f90 ${OBJS} $(FLAGS) -o $(FFILE).exec
-	gfortran ./Lib_VTK_IO/obj/*.o *.o $(FLAGS) -o $(FFILE).exec
+	gfortran $(FFILE).f90 ./Lib_VTK_IO/obj/*.o *.o $(FLAGS) -o $(FFILE).exec
 
 file: 
 	vim -O Makefile ../LevelSet_SA/Makefile
