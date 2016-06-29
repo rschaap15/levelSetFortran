@@ -1,4 +1,5 @@
 MODULE set_subs
+  USE Lib_VTK_IO
   IMPLICIT NONE
   CONTAINS
 !*************************************************************************************!
@@ -113,12 +114,11 @@ END SUBROUTINE strandGen
     !*************************************************************************************!
     ! Output to VTS file using the following subroutine
     !*************************************************************************************!
-    SUBROUTINE output_vtk(nx,Dat,output_filename)
+    SUBROUTINE output_vtk(nx,output_filename)
         !INTEGER,DIMENSION(:),INTENT(IN)::dims
-        INTEGER,DIMENSION(:),INTENT(IN):: coords,nx
+        INTEGER,DIMENSION(3),INTENT(IN) :: nx
         CHARACTER(LEN=*),INTENT(IN)  ::  output_filename
-        INTEGER,INTENT(IN)  ::  rank
-        TYPE (SET),DIMENSION(-1:,-1:,-1:),INTENT(IN) :: Dat
+        !TYPE (SET),DIMENSION(-1:,-1:,-1:),INTENT(IN) :: Dat
         CHARACTER(LEN=1024) ::  output_filename_rank,output_folder,cmd
         INTEGER :: E_IO
         INTEGER :: nnx1,nnx2,nny1,nny2,nnz1,nnz2
@@ -128,24 +128,24 @@ END SUBROUTINE strandGen
         CALL SYSTEM(trim(cmd))
         
         
-        IF (rank < 10) THEN
-            WRITE(output_filename_rank,'(A,A,I1,A4)') trim(output_folder),trim(output_filename),rank,'.vts'
-        ELSE IF (rank >=10 .AND. rank<100) THEN
-            WRITE(output_filename_rank,'(A,A,I2,A4)') trim(output_folder),trim(output_filename),rank,'.vts'
-        ELSE IF (rank >=100 .AND. rank<1000) THEN
-            WRITE(output_filename_rank,'(A,A,I3,A4)') trim(output_folder),trim(output_filename),rank,'.vts'
-        ELSE 
-            WRITE(*,*) 'error in putting output_filename with this rank',rank
-        END IF
+        !IF (rank < 10) THEN
+            !WRITE(output_filename_rank,'(A,A,I1,A4)') trim(output_folder),trim(output_filename),rank,'.vts'
+        !ELSE IF (rank >=10 .AND. rank<100) THEN
+            !WRITE(output_filename_rank,'(A,A,I2,A4)') trim(output_folder),trim(output_filename),rank,'.vts'
+        !ELSE IF (rank >=100 .AND. rank<1000) THEN
+            !WRITE(output_filename_rank,'(A,A,I3,A4)') trim(output_folder),trim(output_filename),rank,'.vts'
+        !ELSE 
+            !WRITE(*,*) 'error in putting output_filename with this rank',rank
+        !END IF
         ! output to vtk files
-            nnx1 = (coords(1))*nx(1) + coords(1)-1
-            nnx2 = (coords(1)+1)*nx(1) + coords(1)
+            !nnx1 = (coords(1))*nx(1) + coords(1)-1
+            !nnx2 = (coords(1)+1)*nx(1) + coords(1)
+!
+            !nny1 = (coords(2))*nx(2) + coords(2) - 1
+            !nny2 = (coords(2)+1)*nx(2) + coords(2)
 
-            nny1 = (coords(2))*nx(2) + coords(2) - 1
-            nny2 = (coords(2)+1)*nx(2) + coords(2)
-
-            nnz1 = (coords(3))*nx(3) + coords(3) - 1
-            nnz2 = (coords(3)+1)*nx(3) + coords(3)
+            !nnz1 = (coords(3))*nx(3) + coords(3) - 1
+            !nnz2 = (coords(3)+1)*nx(3) + coords(3)
         WRITE(*,*) 'Writing file ',trim(output_filename_rank)
         E_IO = VTK_INI_XML_write(fformat='binary', filename=trim(output_filename_rank),mesh_topology='UnstructuredGrid',&
             nx1=nnx1        ,&
@@ -158,40 +158,40 @@ END SUBROUTINE strandGen
         E_IO = VTK_FLD_XML(fld=0.e1,fname='TIME')
         E_IO = VTK_FLD_XML(fld=1,fname='CYCLE')
         E_IO = VTK_FLD_XML(fld_action='close')
-        E_IO = VTK_GEO_XML_WRITE(& 
-            nx1=nnx1        ,&
-            nx2=nnx2        ,&
-            ny1=nny1        ,&
-            ny2=nny2        ,&
-            nz1=nnz1        ,&
-            nz2=nnz2        ,&
-            NN=INT((nx(1)+2)*(nx(2)+2)*(nx(3)+2)),&
-            X=Dat%x         ,&
-            Y=Dat%y         ,&
-            Z=Dat%z)
-        E_IO = VTK_CON_XML(&
-            NN =            ,&  ! Total Number of Nodes
-            NC =            ,&  ! Total Number of Connections
-            X  =            ,&  ! ??
-            Y  =            ,&  ! ?? 
-            Z  =            )   ! ?? 
+        !E_IO = VTK_GEO_XML_WRITE(& 
+            !nx1=nnx1        ,&
+            !nx2=nnx2        ,&
+            !ny1=nny1        ,&
+            !ny2=nny2        ,&
+            !nz1=nnz1        ,&
+            !nz2=nnz2        ,&
+            !NN=INT((nx(1)+2)*(nx(2)+2)*(nx(3)+2)),&
+            !X=Dat%x         ,&
+            !Y=Dat%y         ,&
+            !Z=Dat%z)
+        !E_IO = VTK_CON_XML(&
+            !NN =            ,&  ! Total Number of Nodes
+            !NC =            ,&  ! Total Number of Connections
+            !X  =            ,&  ! ??
+            !Y  =            ,&  ! ?? 
+            !Z  =            )   ! ?? 
         E_IO = VTK_DAT_XML(var_location='node',var_block_action='open')
-        E_IO = VTK_VAR_XML(             &
-            NC_NN=(nx(1)+2)*(nx(2)+2)*(nx(3)+2) ,&
-            varname='Phi'              ,&
-            var=Dat%phi)
-        E_IO = VTK_VAR_XML(             &
-            NC_NN=(nx(1)+2)*(nx(2)+2)*(nx(3)+2) ,&
-            varname='gradPhiX'         ,&
-            var=Dat%gradPhiX)
-        E_IO = VTK_VAR_XML(             &
-            NC_NN=(nx(1)+2)*(nx(2)+2)*(nx(3)+2) ,&
-            varname='gradPhiY'         ,&
-            var=Dat%gradPhiY)
-        E_IO = VTK_VAR_XML(             &
-            NC_NN=(nx(1)+2)*(nx(2)+2)*(nx(3)+2) ,&
-            varname='gradPhiZ'         ,&
-            var=Dat%gradPhiZ)
+        !E_IO = VTK_VAR_XML(             &
+            !NC_NN=(nx(1)+2)*(nx(2)+2)*(nx(3)+2) ,&
+            !varname='Phi'              ,&
+            !var=Dat%phi)
+        !E_IO = VTK_VAR_XML(             &
+            !NC_NN=(nx(1)+2)*(nx(2)+2)*(nx(3)+2) ,&
+            !varname='gradPhiX'         ,&
+            !var=Dat%gradPhiX)
+        !E_IO = VTK_VAR_XML(             &
+            !NC_NN=(nx(1)+2)*(nx(2)+2)*(nx(3)+2) ,&
+            !varname='gradPhiY'         ,&
+            !var=Dat%gradPhiY)
+        !E_IO = VTK_VAR_XML(             &
+            !NC_NN=(nx(1)+2)*(nx(2)+2)*(nx(3)+2) ,&
+            !varname='gradPhiZ'         ,&
+            !var=Dat%gradPhiZ)
         E_IO = VTK_DAT_XML(var_location='node',var_block_action='close')
         E_IO = VTK_GEO_XML_WRITE()
         E_IO = VTK_END_XML()

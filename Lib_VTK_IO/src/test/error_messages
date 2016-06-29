@@ -1,0 +1,126 @@
+gfortran: error: ./src/test/Test_Driver.f90: No such file or directory
+gfortran: fatal error: no input files
+compilation terminated.
+gfortran: error: ./src/test/Test_Driver.f90: No such file or directory
+gfortran: fatal error: no input files
+compilation terminated.
+Test_Driver.f90:280.37:
+
+  real(R4P),    dimension(1:Nn):: x = [0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:281.37:
+
+  real(R4P),    dimension(1:Nn):: y = [0,0,0,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:282.37:
+
+  real(R4P),    dimension(1:Nn):: z = [0,0,0,0,0,0,1,1,1,1,1,1,2,2,2,3,3,3,4,4,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:474.37:
+
+  real(R4P),    dimension(1:Nn):: x = [0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:475.37:
+
+  real(R4P),    dimension(1:Nn):: y = [0,0,0,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:476.37:
+
+  real(R4P),    dimension(1:Nn):: z = [0,0,0,0,0,0,1,1,1,1,1,1,2,2,2,3,3,3,4,4,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:904.68:
+
+  call MPI_REDUCE(t,tmax,1,MPI_REAL8,MPI_MAX,0,MPI_COMM_WORLD, E_IO)
+                                                                    1
+Warning: Procedure 'mpi_reduce' called with an implicit interface at (1)
+Test_Driver.f90:905.68:
+
+  call MPI_REDUCE(t,tmin,1,MPI_REAL8,MPI_MIN,0,MPI_COMM_WORLD, E_IO)
+                                                                    1
+Warning: Procedure 'mpi_reduce' called with an implicit interface at (1)
+Test_Driver.f90:906.69:
+
+  call MPI_REDUCE(t,tmean,1,MPI_REAL8,MPI_SUM,0,MPI_COMM_WORLD, E_IO)
+                                                                     1
+Warning: Procedure 'mpi_reduce' called with an implicit interface at (1)
+Test_Driver.f90:501.4:
+
+  v=(/0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.
+    1
+Warning: Conversion from REAL(4) to REAL(8) at (1)
+Test_Driver.f90:306.4:
+
+  v=(/0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.
+    1
+Warning: Conversion from REAL(4) to REAL(8) at (1)
+Test_Driver.f90:560.55:
+
+  integer(I4P), parameter::                          nn       = (nx2     -nx1  
+                                                       1
+Warning: Unused parameter 'nn' declared at (1)
+Test_Driver.f90:280.37:
+
+  real(R4P),    dimension(1:Nn):: x = [0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:281.37:
+
+  real(R4P),    dimension(1:Nn):: y = [0,0,0,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:282.37:
+
+  real(R4P),    dimension(1:Nn):: z = [0,0,0,0,0,0,1,1,1,1,1,1,2,2,2,3,3,3,4,4,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:474.37:
+
+  real(R4P),    dimension(1:Nn):: x = [0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,2,0,1,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:475.37:
+
+  real(R4P),    dimension(1:Nn):: y = [0,0,0,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:476.37:
+
+  real(R4P),    dimension(1:Nn):: z = [0,0,0,0,0,0,1,1,1,1,1,1,2,2,2,3,3,3,4,4,
+                                     1
+Warning: Conversion from INTEGER(4) to REAL(4) at (1)
+Test_Driver.f90:904.68:
+
+  call MPI_REDUCE(t,tmax,1,MPI_REAL8,MPI_MAX,0,MPI_COMM_WORLD, E_IO)
+                                                                    1
+Warning: Procedure 'mpi_reduce' called with an implicit interface at (1)
+Test_Driver.f90:905.68:
+
+  call MPI_REDUCE(t,tmin,1,MPI_REAL8,MPI_MIN,0,MPI_COMM_WORLD, E_IO)
+                                                                    1
+Warning: Procedure 'mpi_reduce' called with an implicit interface at (1)
+Test_Driver.f90:906.69:
+
+  call MPI_REDUCE(t,tmean,1,MPI_REAL8,MPI_SUM,0,MPI_COMM_WORLD, E_IO)
+                                                                     1
+Warning: Procedure 'mpi_reduce' called with an implicit interface at (1)
+Test_Driver.f90:501.4:
+
+  v=(/0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.
+    1
+Warning: Conversion from REAL(4) to REAL(8) at (1)
+Test_Driver.f90:306.4:
+
+  v=(/0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.
+    1
+Warning: Conversion from REAL(4) to REAL(8) at (1)
+Test_Driver.f90:560.55:
+
+  integer(I4P), parameter::                          nn       = (nx2     -nx1  
+                                                       1
+Warning: Unused parameter 'nn' declared at (1)

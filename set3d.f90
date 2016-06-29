@@ -45,6 +45,10 @@ REAL,ALLOCATABLE,DIMENSION(:,:,:,:,:) :: gradPhi
 INTEGER iargc
 REAL,ALLOCATABLE,DIMENSION(:,:) :: q1S,q2S,q3S,q4S,q5S,q6S,q7S,q8S
 INTEGER,DIMENSION(8) :: qq
+INTEGER,ALLOCATABLE,DIMENSION(:) :: offS
+INTEGER*1,ALLOCATABLE,DIMENSION(:) :: cellT
+INTEGER :: E_IO
+
 
 
 !*************************************************************************************!
@@ -87,6 +91,9 @@ CLOSE(iunit)
 
 ALLOCATE(nodesT(3,ntri*5))
 nSurfElem = ntri
+
+ALLOCATE(offS(ntri))
+ALLOCATE(cellT(ntri))
 
 ! search through data and put into surfX and surfElem style arrays
 DO k = 1,ntri
@@ -137,10 +144,41 @@ DEALLOCATE(nodesT)
 DEALLOCATE(triangles)
 DEALLOCATE(normals)
 
+DO k = 1, ntri
+    offS(k) = k*3
+END DO
+
+cellT = 5
+
+!*************************************************************************************!
+! Output to VTS file using the following subroutine
+!*************************************************************************************!
+        WRITE(*,*) 'Writing file test.vtu'
+        E_IO = VTK_INI_XML_write(fformat='ascii', filename='test.vtu',mesh_topology='UnstructuredGrid')
+        E_IO = VTK_FLD_XML(fld_action='open')
+        E_IO = VTK_FLD_XML(fld=0.e1,fname='TIME')
+        E_IO = VTK_FLD_XML(fld=1,fname='CYCLE')
+        E_IO = VTK_FLD_XML(fld_action='close')
+        E_IO = VTK_GEO_XML_WRITE(nSurfNode,ntri,surfX(:,1),surfX(:,2),surfX(:,3))
+!        E_IO = VTK_GEO_XML(&
+!           NN = 6          ,&
+!           NC = 1          ,&
+!           X  = x_loc      ,&
+!           Y  = y_loc      ,&
+!           Z  = z_loc      )
+        E_IO = VTK_CON_XML(&
+            NC       = ntri      ,&
+            connect  = RESHAPE(surfElem,(/3*ntri/))  ,&
+            offset   = offS      ,&
+            cell_type = cellT     )
+        E_IO = VTK_GEO_XML_WRITE()
+        E_IO = VTK_END_XML()
 
 !*************************************************************************************!
 ! Determine xLo and xHi
 !*************************************************************************************!
+
+STOP
 
 ! initialize
 x1 = surfX(1,1);
@@ -201,7 +239,7 @@ ny = ceiling((maxY-minY)/dx)+1;
 nz = ceiling((maxZ-minZ)/dx)+1;
 
 ! number of cells you want to add
-dd = 10.
+dd = 10
 
 ! adding more cells edge
 nx = nx+2*dd

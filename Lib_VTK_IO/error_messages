@@ -1,0 +1,168 @@
+./src/lib/IR_Precision.f90:1207:0: warning: ‘bstr_r16p’ defined but not used [-Wunused-function]
+   elemental function bstr_R16P(n) result(bstr)
+ ^
+./src/lib/IR_Precision.f90:1032:0: warning: ‘ctor_r16p’ defined but not used [-Wunused-function]
+   function ctor_R16P(pref,error,str,knd) result(n)
+ ^
+./src/lib/IR_Precision.f90:725:0: warning: ‘str_a_r16p’ defined but not used [-Wunused-function]
+   pure function str_a_R16P(no_sign,delimiters,n) result(str)
+ ^
+./src/lib/IR_Precision.f90:468:0: warning: ‘strf_r16p’ defined but not used [-Wunused-function]
+   elemental function strf_R16P(fm,n) result(str)
+ ^
+./src/lib/IR_Precision.f90:408:0: warning: ‘byte_size_r16p’ defined but not used [-Wunused-function]
+   elemental function byte_size_R16P(r) result(bytes)
+ ^
+./src/lib/IR_Precision.f90:284:0: warning: ‘bit_size_r16p’ defined but not used [-Wunused-function]
+   elemental function bit_size_R16P(r) result(bits)
+ ^
+./src/lib/Lib_Base64.f90:997.22:
+
+  allocate(nI1P(1:size(n,dim=1)*BYI8P)) ; nI1P = 0_I1P
+                      1
+Warning: Conversion from INTEGER(4) to INTEGER(8) at (1)
+./src/lib/Lib_Base64.f90:979.37:
+
+  allocate(nI1P(1:size(n,dim=1)*BYR4P)) ; nI1P = 0_I1P
+                                     1
+Warning: Conversion from INTEGER(1) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:961.37:
+
+  allocate(nI1P(1:size(n,dim=1)*BYR8P)) ; nI1P = 0_I1P
+                                     1
+Warning: Conversion from INTEGER(1) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:943.38:
+
+  allocate(nI1P(1:size(n,dim=1)*BYR16P)) ; nI1P = 0_I1P
+                                      1
+Warning: Conversion from INTEGER(2) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:755.7:
+
+  ns = size(n,dim=1)
+       1
+Warning: Conversion from INTEGER(4) to INTEGER(8) at (1)
+./src/lib/Lib_Base64.f90:759.9:
+
+  padd = mod((ns*BYI1P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+         1
+Warning: Conversion from INTEGER(8) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:732.7:
+
+  ns = size(n,dim=1)
+       1
+Warning: Conversion from INTEGER(4) to INTEGER(8) at (1)
+./src/lib/Lib_Base64.f90:736.9:
+
+  padd = mod((ns*BYI2P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+         1
+Warning: Conversion from INTEGER(8) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:709.7:
+
+  ns = size(n,dim=1)
+       1
+Warning: Conversion from INTEGER(4) to INTEGER(8) at (1)
+./src/lib/Lib_Base64.f90:713.9:
+
+  padd = mod((ns*BYI4P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+         1
+Warning: Conversion from INTEGER(8) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:686.7:
+
+  ns = size(n,dim=1)
+       1
+Warning: Conversion from INTEGER(4) to INTEGER(8) at (1)
+./src/lib/Lib_Base64.f90:690.9:
+
+  padd = mod((ns*BYI8P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+         1
+Warning: Conversion from INTEGER(8) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:663.7:
+
+  ns = size(n,dim=1)
+       1
+Warning: Conversion from INTEGER(4) to INTEGER(8) at (1)
+./src/lib/Lib_Base64.f90:667.9:
+
+  padd = mod((ns*BYR4P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+         1
+Warning: Conversion from INTEGER(8) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:640.7:
+
+  ns = size(n,dim=1)
+       1
+Warning: Conversion from INTEGER(4) to INTEGER(8) at (1)
+./src/lib/Lib_Base64.f90:644.9:
+
+  padd = mod((ns*BYR8P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+         1
+Warning: Conversion from INTEGER(8) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:617.7:
+
+  ns = size(n,dim=1)
+       1
+Warning: Conversion from INTEGER(4) to INTEGER(8) at (1)
+./src/lib/Lib_Base64.f90:621.9:
+
+  padd = mod((ns*BYR16P),3_I8P) ; if (padd>0_I4P) padd = 3_I4P - padd
+         1
+Warning: Conversion from INTEGER(8) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:491.9:
+
+  padd = mod((BYR4P),3_I1P) ; if (padd>0_I4P) padd = 3_I4P - padd
+         1
+Warning: Conversion from INTEGER(1) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:470.9:
+
+  padd = mod((BYR8P),3_I1P) ; if (padd>0_I4P) padd = 3_I4P - padd
+         1
+Warning: Conversion from INTEGER(1) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:449.9:
+
+  padd = mod((BYR16P),3_I2P) ; if (padd>0_I4P) padd = 3_I4P - padd
+         1
+Warning: Conversion from INTEGER(2) to INTEGER(4) at (1)
+./src/lib/Lib_Base64.f90:291.14:
+
+    sixb(1) = index(base64,code(c  :c  )) - 1
+              1
+Warning: Conversion from INTEGER(4) to INTEGER(1) at (1)
+./src/lib/Lib_Base64.f90:292.14:
+
+    sixb(2) = index(base64,code(c+1:c+1)) - 1
+              1
+Warning: Conversion from INTEGER(4) to INTEGER(1) at (1)
+./src/lib/Lib_Base64.f90:293.14:
+
+    sixb(3) = index(base64,code(c+2:c+2)) - 1
+              1
+Warning: Conversion from INTEGER(4) to INTEGER(1) at (1)
+./src/lib/Lib_Base64.f90:294.14:
+
+    sixb(4) = index(base64,code(c+3:c+3)) - 1
+              1
+Warning: Conversion from INTEGER(4) to INTEGER(1) at (1)
+./src/lib/Lib_Base64.f90:289.13:
+
+  do c=1_I8P,len(code),4_I8P ! loop over code characters: 3 bytes (24 bits) sca
+             1
+Warning: Conversion from INTEGER(4) to INTEGER(8) at (1)
+./src/lib/Lib_Base64.f90:932:0: warning: ‘b64_decode_r16_a’ defined but not used [-Wunused-function]
+   pure subroutine b64_decode_R16_a(code,n)
+ ^
+./src/lib/Lib_Base64.f90:788:0: warning: ‘b64_decode_r16’ defined but not used [-Wunused-function]
+   elemental subroutine b64_decode_R16(code,n)
+ ^
+./src/lib/Lib_Base64.f90:604:0: warning: ‘b64_encode_r16_a’ defined but not used [-Wunused-function]
+   pure subroutine b64_encode_R16_a(n,code)
+ ^
+./src/lib/Lib_Base64.f90:434:0: warning: ‘b64_encode_r16’ defined but not used [-Wunused-function]
+   pure subroutine b64_encode_R16(n,code)
+ ^
+./src/lib/Lib_VTK_IO_Back_End.f90: In function ‘move’:
+./src/lib/Lib_VTK_IO_Back_End.f90:392:0: warning: ‘.buff’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     if(.not. up) buffer = buff
+ ^
+./src/lib/Lib_VTK_IO_INI_XML.f90: In function ‘vtk_ini_xml_read’:
+./src/lib/Lib_VTK_IO_INI_XML.f90:334:0: warning: ‘np’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+   if (present(npieces)) npieces = np
+ ^

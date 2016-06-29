@@ -1,0 +1,20 @@
+
+[1;31m Compiler used [0m[1m gnu => /usr/bin/mpif90[0m 
+ [1;31mSource dir    [0m[1m ./src/lib/ ./src/test/[0m 
+ [1;31m Lib dir       [0m[1m ./static/[0m 
+ [1;31m Libray        [0m[1m ./static/Lib_VTK_IO.a[0m 
+ [1;31m Shared lib    [0m[1m no[0m 
+ [1;31m Debug         [0m[1m yes[0m 
+ [1;31m F-standard    [0m[1m no[0m 
+ [1;31m Optimize      [0m[1m yes[0m 
+ [1;31m OpenMP        [0m[1m no[0m 
+ [1;31m MPI           [0m[1m yes[0m 
+ [1;31m R16P          [0m[1m (Known R16P switch) Used R16P=no[0m
+
+[1;31m Compiling options[0m
+[1m [-cpp -c -J./mod/ -O0 -C -g -fmax-errors=0 -Wall -Wno-array-temporaries -Warray-bounds -Wcharacter-truncation -Wline-truncation -Wconversion-extra -Wimplicit-interface -Wimplicit-procedure -Wunderflow -Wextra -Wuninitialized -fcheck=all -fmodule-private -ffree-line-length-132 -fimplicit-none -ffpe-trap=invalid,overflow -fbacktrace -fdump-core -finit-real=nan  -O3  -DDEBUG -DMPI2][0m
+
+[1;31m Linking options [0m
+[1m [ -O0 -C -g -fmax-errors=0 -Wall -Wno-array-temporaries -Warray-bounds -Wcharacter-truncation -Wline-truncation -Wconversion-extra -Wimplicit-interface -Wimplicit-procedure -Wunderflow -Wextra -Wuninitialized -fcheck=all -fmodule-private -ffree-line-length-132 -fimplicit-none -ffpe-trap=invalid,overflow -fbacktrace -fdump-core -finit-real=nan  -O3  -DDEBUG -DMPI2][0m
+
+[1;31m Linking library[0m[1m Lib_VTK_IO[0m
